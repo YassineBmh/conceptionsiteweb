@@ -1,12 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partenaires</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* EXACT 3 per row */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .partner-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 130px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px rgba(0,0,0,0.15);
+        }
+
+        .partner-card img {
+            max-width: 80%;
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+        /* MOBILE: 1 per line */
+        @media(max-width: 700px) {
+            .partners-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        /* TABLET: 2 per line */
+        @media(min-width: 701px) and (max-width: 1000px) {
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    partenaires
+
+    <h1>Nos Partenaires</h1>
+
+    <div class="partners-grid">
+
+        <div class="partner-card"><img src="../logos/renault.png" alt="Renault"></div>
+        <div class="partner-card"><img src="../logos/peugeot.png" alt="Peugeot"></div>
+        <div class="partner-card"><img src="../logos/audi.png" alt="Audi"></div>
+
+        <div class="partner-card"><img src="../logos/mercedes.png" alt="Mercedes"></div>
+        <div class="partner-card"><img src="../logos/volkswagen.png" alt="Volkswagen"></div>
+        <div class="partner-card"><img src="../logos/bmw.png" alt="BMW"></div>
+
+        <div class="partner-card"><img src="../logos/dacia.png" alt="Dacia"></div>
+        <div class="partner-card"><img src="../logos/hyundai.png" alt="Hyundai"></div>
+        <div class="partner-card"><img src="../logos/citroen.png" alt="Citroën"></div>
+
+        <div class="partner-card"><img src="../logos/nissan.png" alt="Nissan"></div>
+        <div class="partner-card"><img src="../logos/kia.png" alt="Kia"></div>
+        <div class="partner-card"><img src="../logos/porsche.png" alt="Porsche"></div>
+
+        <div class="partner-card"><img src="../logos/ensa.png" alt="ENSA Agadir"></div>
+
+    </div>
+
+    <script>
+        // Auto-resize iframe height
+        function resize() {
+            window.parent.postMessage({
+                type: "resizeIframe",
+                height: document.body.scrollHeight
+            }, "*");
+        }
+        window.onload = resize;
+        window.onresize = resize;
+    </script>
+
 </body>
-<script src="../js/controllsize.js"></script>
 </html>
