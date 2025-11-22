@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Détails voiture</title>
+
+<style>
+img{ width:250px; display:block; margin-bottom:10px; }
+</style>
+</head>
+<body>
+
+<div id="details"></div>
+ 
+<script src="../js/data.js"></script>
+<script>
+
+// Récupérer les paramètres
+const params = new URLSearchParams(window.location.search);
+const marque = params.get("marque");
+const model  = params.get("model");
+
+const container = document.getElementById("details");
+
+// Charger la voiture
+let voitureTrouvee = null;
+
+data.cars.forEach(c => {
+    if (c.marque === marque) {
+        const car = c.models.find(m => m.model === model);
+        if (car) voitureTrouvee = { ...car, marque: marque };
+    }
+});
+
+if (!voitureTrouvee) {
+    container.innerHTML = "<p>Voiture introuvable.</p>";
+} else {
+    const v = voitureTrouvee;
+    container.innerHTML = `
+        <h1>${v.marque} ${v.model}</h1>
+        <img src="${v.image}" alt="${v.model}">
+
+        <p><strong>Carburant :</strong> ${v.carburants}</p>
+        <p><strong>Puissance réelle :</strong> ${v.puissance_reel} ch</p>
+        <p><strong>Boîte de vitesses :</strong> ${v.boite_vitesse}</p>
+        <p><strong>Prix :</strong> €${v.prix}</p>
+        <p><strong>Kilométrage :</strong> ${v.km || "Non renseigné"}</p>
+        <p><strong>Année :</strong> ${v.annee || "Non renseignée"}</p>
+
+        <button onclick="ajouterAuPanier()">Ajouter au panier</button>
+        <button onclick="history.back()">⬅ Retour</button>
+    `;
+}
+function ajouterAuPanier() {
+    if (!voitureTrouvee) return;
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    panier.push(voitureTrouvee);
+    localStorage.setItem("panier", JSON.stringify(panier));
+    alert("Voiture ajoutée au panier !");
+}
+
+
+</script>
+</body>
+<script src="../js/controllsize.js"></script>
+</html>
