@@ -17,6 +17,9 @@
             flex-wrap: wrap;
             margin-top: 30px;
         }
+        button{
+            cursor: pointer;
+        }
         .voiture{
             position: relative;
             margin: 20px 20px;
@@ -106,7 +109,43 @@
             border-radius: 20px;
             box-shadow: 0px 0px 10px rgba(206, 99, 10, 0.804);
         }
-
+        #achetervider{
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px 20px;
+        }
+        #achetervider button{
+            border:none;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            padding: 10px 10px;
+            color: white;
+            overflow: hidden;
+        }
+        #acheterall{
+            background-color: #ff6600;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.847);
+                        font-weight: bold;
+        }
+        #viderpanier{
+            background-color: rgba(0, 0, 0, 0.903);
+            box-shadow: 0px 0px 20px gray;
+        }
+        #acheterall:hover{
+            box-shadow: 5px 10px 20px #ff6600;
+            text-shadow: 0px 0px 10px rgba(128, 128, 128, 0.652);
+            transform: translateY(-3px) scale(1.1);
+            color: rgba(0, 0, 0, 0.475);
+        }
+        #viderpanier:hover{
+            box-shadow: 5px 10px 20px rgba(255, 0, 0, 0.758);
+            text-shadow: 0px 0px 10px rgba(128, 128, 128, 0.652);
+            color: rgba(0, 0, 0, 0.475);
+            background-color: rgba(255, 0, 0, 0.758);
+            transform: translateY(-3px) scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -117,8 +156,12 @@
 
 
     <div id="panier">   </div>
-
-    <button onclick="viderPanier()">Vider le panier</button>
+        <!--acheter et vider le panier buttons-->
+        
+    <div id="achetervider">
+        <button id="acheterall" >Acheter</button>
+        <button id="viderpanier" onclick="viderPanier()">Vider le panier</button>
+    </div>
     <script>
         let panier = JSON.parse(localStorage.getItem("panier")) || [];
         const container = document.getElementById("panier");
