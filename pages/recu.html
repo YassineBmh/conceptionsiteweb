@@ -29,76 +29,90 @@
             width: 150px;
             height: 150px;
         }
+        @media print{
+            .btn-print{
+                display: none;
+            }
+            #recu{
+                width: 100% ;
+                max-width: 100% ;
+                margin: 0 ;
+                padding: 0 ;
+                border: none ;
+                box-shadow: none ;
+            }
+        }
     </style>
 </head>
 <body>
-<div id="recu">
-    <h2>Reçu d'achat</h2>
-    <div id="N_fact"><strong>Numero de Facture: </strong><span id="r_numero"></span></div>
-    <h3>Informations du client</h3>
-    <p><strong>Nom :</strong> <span id="r_nom"></span></p>
-    <p><strong>Email :</strong> <span id="r_email"></span></p>
-    <p><strong>Téléphone :</strong> <span id="r_tel"></span></p>
-    <p><strong>Adresse :</strong> <span id="r_adresse"></span></p>
-    <p><strong>Méthode de paiement :</strong> <span id="r_pay"></span></p>
-    <p><strong>Date :</strong> <span id="r_date"></span></p>
+    <div id="recu">
+        <h2>Reçu d'achat</h2>
+        <div id="N_fact"><strong>Numero de Facture: </strong><span id="r_numero"></span></div>
+        <h3>Informations du client</h3>
+        <p><strong>Nom :</strong> <span id="r_nom"></span></p>
+        <p><strong>Email :</strong> <span id="r_email"></span></p>
+        <p><strong>Téléphone :</strong> <span id="r_tel"></span></p>
+        <p><strong>Adresse :</strong> <span id="r_adresse"></span></p>
+        <p><strong>Méthode de paiement :</strong> <span id="r_pay"></span></p>
+        <p><strong>Date :</strong> <span id="r_date"></span></p>
 
-    <h3>Voitures achetées</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Marque / Modèle</th>
-                <th>Carburant</th>
-                <th>Puissance</th>
-                <th>Boîte</th>
-                <th>Prix (€)</th>
-            </tr>
-        </thead>
-        <tbody id="liste_voitures"></tbody>
-    </table>
+        <h3>Voitures achetées</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marque / Modèle</th>
+                    <th>Carburant</th>
+                    <th>Puissance</th>
+                    <th>Boîte</th>
+                    <th>Prix (€)</th>
+                </tr>
+            </thead>
+            <tbody id="liste_voitures"></tbody>
+        </table>
 
-    <p class="total">Total : <span id="total_prix"></span> €</p>
+        <p class="total">Total : <span id="total_prix"></span> €</p>
 
-    <img src="cashet.png" alt="cashet">
-</div>
-<button class="btn-print" onclick="window.print()">Imprimer le reçu</button>
+        <img src="cashet.png" alt="cashet">
+        
+    </div>
+    <button class="btn-print" onclick="window.print()">Imprimer le reçu</button>
 
-<script>
-    // 1) Récupérer les infos du client depuis l'URL
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("r_nom").textContent = params.get("nom") || "";
-    document.getElementById("r_email").textContent = params.get("email") || "";
-    document.getElementById("r_tel").textContent = params.get("telephone") || "";
-    document.getElementById("r_adresse").textContent = params.get("adresse") || "";
-    document.getElementById("r_pay").textContent = params.get("pay") || "";
-    document.getElementById("r_numero").textContent= params.get("numero") || "";
-    document.getElementById("r_date").textContent = new Date().toLocaleString();
+    <script>
+        // 1) Récupérer les infos du client depuis l'URL
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("r_nom").textContent = params.get("nom") || "";
+        document.getElementById("r_email").textContent = params.get("email") || "";
+        document.getElementById("r_tel").textContent = params.get("telephone") || "";
+        document.getElementById("r_adresse").textContent = params.get("adresse") || "";
+        document.getElementById("r_pay").textContent = params.get("pay") || "";
+        document.getElementById("r_numero").textContent= params.get("numero") || "";
+        document.getElementById("r_date").textContent = new Date().toLocaleString();
 
-    // 2) Récupérer les voitures depuis localStorage
-    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+        // 2) Récupérer les voitures depuis localStorage
+        let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    let tbody = document.getElementById("liste_voitures");
-    let total = 0;
+        let tbody = document.getElementById("liste_voitures");
+        let total = 0;
 
-    panier.forEach(v => {
-        let tr = document.createElement("tr");
+        panier.forEach(v => {
+            let tr = document.createElement("tr");
 
-        tr.innerHTML = `
-            <td>${v.marque} ${v.model}</td>
-            <td>${v.carburants}</td>
-            <td>${v.puissance_reel} ch</td>
-            <td>${v.boite_vitesse}</td>
-            <td>${v.prix}</td>
-        `;
+            tr.innerHTML = `
+                <td>${v.marque} ${v.model}</td>
+                <td>${v.carburants}</td>
+                <td>${v.puissance_reel} ch</td>
+                <td>${v.boite_vitesse}</td>
+                <td>${v.prix}</td>
+            `;
 
-        tbody.appendChild(tr);
-        total += Number(v.prix);
-    });
+            tbody.appendChild(tr);
+            total += Number(v.prix);
+        });
 
-    document.getElementById("total_prix").textContent = total.toFixed(2);
+        document.getElementById("total_prix").textContent = total.toFixed(2);
 
-    // 3) (optionnel) vider le panier après génération du reçu
-    // localStorage.removeItem("panier");
-</script>
+        // 3) (optionnel) vider le panier après génération du reçu
+        // localStorage.removeItem("panier");
+    </script>
 </body>
 </html>

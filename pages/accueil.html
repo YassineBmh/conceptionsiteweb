@@ -8,250 +8,250 @@
 </head>
 
 <body>
-<section id="recherche">
-  <div class="stage" id="stage">
-    <svg viewBox="0 0 1400 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:220px;">
-      <defs>
-        <linearGradient id="carBody" x1="0" x2="1">
-          <stop offset="0%" stop-color="#333"/>
-          <stop offset="100%" stop-color="red"/>
-        </linearGradient>
-      </defs>
-      <g id="car" transform="translate(-420,180)">
-        <ellipse cx="240" cy="170" rx="120" ry="28" fill="#000" opacity="0.28"/>
-        <path d="M60 150 L110 120 L300 120 L350 150 L380 150 L420 180 L420 200 L40 200 L40 180 Z" fill="url(#carBody)" stroke="#06387c" stroke-width="2"/>
-        <path d="M120 130 L230 130 L270 150 L150 150 Z" fill="#bfe8ff" opacity="0.9"/>
-        <rect x="200" y="150" width="20" height="6" rx="3" fill="#03325a"/>
-        <g id="wheels">
-          <g class="wheel" transform="translate(120,200)">
-            <circle r="32" fill="#111"/>
-            <circle r="18" fill="#444"/>
-            <g class="spokes">
-              <rect x="-2" y="-18" width="4" height="36" fill="#222"/>
-              <rect x="-18" y="-2" width="36" height="4" fill="#222"/>
-              <rect x="-12" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
-              <rect x="8" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
+  <section id="recherche">
+    <div class="stage" id="stage">
+      <svg viewBox="0 0 1400 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:220px;">
+        <defs>
+          <linearGradient id="carBody" x1="0" x2="1">
+            <stop offset="0%" stop-color="#333"/>
+            <stop offset="100%" stop-color="red"/>
+          </linearGradient>
+        </defs>
+        <g id="car" transform="translate(-420,180)">
+          <ellipse cx="240" cy="170" rx="120" ry="28" fill="#000" opacity="0.28"/>
+          <path d="M60 150 L110 120 L300 120 L350 150 L380 150 L420 180 L420 200 L40 200 L40 180 Z" fill="url(#carBody)" stroke="#06387c" stroke-width="2"/>
+          <path d="M120 130 L230 130 L270 150 L150 150 Z" fill="#bfe8ff" opacity="0.9"/>
+          <rect x="200" y="150" width="20" height="6" rx="3" fill="#03325a"/>
+          <g id="wheels">
+            <g class="wheel" transform="translate(120,200)">
+              <circle r="32" fill="#111"/>
+              <circle r="18" fill="#444"/>
+              <g class="spokes">
+                <rect x="-2" y="-18" width="4" height="36" fill="#222"/>
+                <rect x="-18" y="-2" width="36" height="4" fill="#222"/>
+                <rect x="-12" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
+                <rect x="8" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
+              </g>
             </g>
-          </g>
-          <g class="wheel" transform="translate(320,200)">
-            <circle r="32" fill="#111"/>
-            <circle r="18" fill="#444"/>
-            <g class="spokes">
-              <rect x="-2" y="-18" width="4" height="36" fill="#222"/>
-              <rect x="-18" y="-2" width="36" height="4" fill="#222"/>
-              <rect x="-12" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
-              <rect x="8" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
+            <g class="wheel" transform="translate(320,200)">
+              <circle r="32" fill="#111"/>
+              <circle r="18" fill="#444"/>
+              <g class="spokes">
+                <rect x="-2" y="-18" width="4" height="36" fill="#222"/>
+                <rect x="-18" y="-2" width="36" height="4" fill="#222"/>
+                <rect x="-12" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
+                <rect x="8" y="-12" width="4" height="24" transform="rotate(45)" fill="#222"/>
+              </g>
             </g>
           </g>
         </g>
-      </g>
-    </svg>
-  </div>
-  <h1>Trouvez la voiture idéale en quelques clics</h1>
-  <h3>Comparez, choisissez et réservez parmi nos modèles sélectionnés avec soin.</h3><br>
-  
-  <div class="search-container">
-    <select id="marqueSelect"><option value="">-- Choisir une marque --</option></select>
-    <select id="modelSelect" disabled><option value="">-- Choisir un modèle --</option></select>
+      </svg>
+    </div>
+    <h1>Trouvez la voiture idéale en quelques clics</h1>
+    <h3>Comparez, choisissez et réservez parmi nos modèles sélectionnés avec soin.</h3><br>
+    
+    <div class="search-container">
+      <select id="marqueSelect"><option value="">-- Choisir une marque --</option></select>
+      <select id="modelSelect" disabled><option value="">-- Choisir un modèle --</option></select>
 
-    <input type="number" id="prixMin" placeholder="Prix Min (€)">
-    <input type="number" id="prixMax" placeholder="Prix Max (€)">
+      <input type="number" id="prixMin" placeholder="Prix Min (€)">
+      <input type="number" id="prixMax" placeholder="Prix Max (€)">
 
-    <select id="carburant">
-      <option value="">-- Carburant --</option>
-      <option value="Essence">Essence</option>
-      <option value="Diesel">Diesel</option>
-      <option value="Hybride">Hybride</option>
-      <option value="Électrique">Électrique</option>
-      <option value="GPL">GPL</option>
-    </select>
+      <select id="carburant">
+        <option value="">-- Carburant --</option>
+        <option value="Essence">Essence</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Hybride">Hybride</option>
+        <option value="Électrique">Électrique</option>
+        <option value="GPL">GPL</option>
+      </select>
 
-    <button id="btnRechercher">Rechercher</button>
-  </div>
-</section>
+      <button id="btnRechercher">Rechercher</button>
+    </div>
+  </section>
 
-<div class="espace"></div>
+  <div class="espace"></div>
 
-<section id="voitures"></section>
+  <section id="voitures"></section>
 
-<div id="pagination"></div>
+  <div id="pagination"></div>
 
 
-<script src="../js/data.js"></script>
-<script src="../js/controllsize.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/controllsize.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-<script>
-const voituresSection = document.getElementById("voitures");
-const paginationContainer = document.getElementById("pagination");
+  <script>
+    const voituresSection = document.getElementById("voitures");
+    const paginationContainer = document.getElementById("pagination");
 
-const marqueSelect = document.getElementById("marqueSelect");
-const modelSelect = document.getElementById("modelSelect");
-const carburantSelect = document.getElementById("carburant");
-const prixMinInput = document.getElementById("prixMin");
-const prixMaxInput = document.getElementById("prixMax");
-const btn = document.getElementById("btnRechercher");
+    const marqueSelect = document.getElementById("marqueSelect");
+    const modelSelect = document.getElementById("modelSelect");
+    const carburantSelect = document.getElementById("carburant");
+    const prixMinInput = document.getElementById("prixMin");
+    const prixMaxInput = document.getElementById("prixMax");
+    const btn = document.getElementById("btnRechercher");
 
-let toutesVoitures = [];
-let voituresAffichees = [];
-let currentPage = 1;
-const voituresParPage = 15;
+    let toutesVoitures = [];
+    let voituresAffichees = [];
+    let currentPage = 1;
+    const voituresParPage = 15;
 
-// charger toutes voitures
-data.cars.forEach(c => c.models.forEach(m => toutesVoitures.push({ ...m, marque: c.marque })));
-toutesVoitures = toutesVoitures.sort(() => Math.random() - 0.5);
-voituresAffichees = [...toutesVoitures];
+    // charger toutes voitures
+    data.cars.forEach(c => c.models.forEach(m => toutesVoitures.push({ ...m, marque: c.marque })));
+    toutesVoitures = toutesVoitures.sort(() => Math.random() - 0.5);
+    voituresAffichees = [...toutesVoitures];
 
-// remplir marques
-[...new Set(data.cars.map(c => c.marque))].forEach(m => {
-  const opt = document.createElement("option");
-  opt.value = m;
-  opt.textContent = m;
-  marqueSelect.appendChild(opt);
-});
+    // remplir marques
+    [...new Set(data.cars.map(c => c.marque))].forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = m;
+      opt.textContent = m;
+      marqueSelect.appendChild(opt);
+    });
 
-// mettre à jour modèles après marque
-marqueSelect.addEventListener("change", () => {
-  modelSelect.innerHTML = '<option value="">-- Choisir un modèle --</option>';
-  modelSelect.disabled = true;
+    // mettre à jour modèles après marque
+    marqueSelect.addEventListener("change", () => {
+      modelSelect.innerHTML = '<option value="">-- Choisir un modèle --</option>';
+      modelSelect.disabled = true;
 
-  const marque = marqueSelect.value;
-  if (!marque) return;
+      const marque = marqueSelect.value;
+      if (!marque) return;
 
-  const car = data.cars.find(c => c.marque === marque);
-  [...new Set(car.models.map(m => m.model))].forEach(m => {
-    const opt = document.createElement("option");
-    opt.value = m;
-    opt.textContent = m;
-    modelSelect.appendChild(opt);
-  });
+      const car = data.cars.find(c => c.marque === marque);
+      [...new Set(car.models.map(m => m.model))].forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        modelSelect.appendChild(opt);
+      });
 
-  modelSelect.disabled = false;
-});
+      modelSelect.disabled = false;
+    });
 
-// afficher voitures
-function afficherVoitures() {
-  voituresSection.replaceChildren();
-  paginationContainer.innerHTML = "";
+    // afficher voitures
+    function afficherVoitures() {
+      voituresSection.replaceChildren();
+      paginationContainer.innerHTML = "";
 
-  const start = (currentPage - 1) * voituresParPage;
-  const end = start + voituresParPage;
+      const start = (currentPage - 1) * voituresParPage;
+      const end = start + voituresParPage;
 
-  voituresAffichees.slice(start, end).forEach(v => {
-    const card = document.createElement("div");
-    card.className = "voiture-card";
-    card.innerHTML = `
-      <div class="prix">€${v.prix}</div>
-      <img src="${v.image}" alt="${v.model}">
-      <br><br><br>
-      <h3>${v.marque} ${v.model}</h3>
-      <p><strong>Carburant :</strong> ${v.carburants}</p>
-      <button onclick="voirDetails('${v.marque}','${v.model}')">Voir détails</button>
-    `;
-    voituresSection.appendChild(card);
-  });
+      voituresAffichees.slice(start, end).forEach(v => {
+        const card = document.createElement("div");
+        card.className = "voiture-card";
+        card.innerHTML = `
+          <div class="prix">€${v.prix}</div>
+          <img src="${v.image}" alt="${v.model}">
+          <br><br><br>
+          <h3>${v.marque} ${v.model}</h3>
+          <p><strong>Carburant :</strong> ${v.carburants}</p>
+          <button onclick="voirDetails('${v.marque}','${v.model}')">Voir détails</button>
+        `;
+        voituresSection.appendChild(card);
+      });
 
-  // pagination
-  const totalPages = Math.ceil(voituresAffichees.length / voituresParPage);
-  const pagination = document.createElement("div");
-  pagination.className = "pagination";
+      // pagination
+      const totalPages = Math.ceil(voituresAffichees.length / voituresParPage);
+      const pagination = document.createElement("div");
+      pagination.className = "pagination";
 
-  const btnPrev = document.createElement("button");
-  btnPrev.textContent = "Préc";
-  if (currentPage === 1) btnPrev.className = "disabled";
-  else btnPrev.onclick = () => changerPage(currentPage - 1);
-  pagination.appendChild(btnPrev);
+      const btnPrev = document.createElement("button");
+      btnPrev.textContent = "Préc";
+      if (currentPage === 1) btnPrev.className = "disabled";
+      else btnPrev.onclick = () => changerPage(currentPage - 1);
+      pagination.appendChild(btnPrev);
 
-  for (let i = 1; i <= totalPages; i++) {
-    const btnPage = document.createElement("button");
-    btnPage.textContent = i;
-    if (i === currentPage) btnPage.className = "disabled";
-    else btnPage.onclick = () => changerPage(i);
-    pagination.appendChild(btnPage);
-  }
+      for (let i = 1; i <= totalPages; i++) {
+        const btnPage = document.createElement("button");
+        btnPage.textContent = i;
+        if (i === currentPage) btnPage.className = "disabled";
+        else btnPage.onclick = () => changerPage(i);
+        pagination.appendChild(btnPage);
+      }
 
-  const btnNext = document.createElement("button");
-  btnNext.textContent = "Suiv";
-  if (currentPage === totalPages) btnNext.className = "disabled";
-  else btnNext.onclick = () => changerPage(currentPage + 1);
-  pagination.appendChild(btnNext);
+      const btnNext = document.createElement("button");
+      btnNext.textContent = "Suiv";
+      if (currentPage === totalPages) btnNext.className = "disabled";
+      else btnNext.onclick = () => changerPage(currentPage + 1);
+      pagination.appendChild(btnNext);
 
-  paginationContainer.appendChild(pagination);
+      paginationContainer.appendChild(pagination);
 
-  setTimeout(() => { if (window.sendHeight) window.sendHeight(); }, 50);
-}
+      setTimeout(() => { if (window.sendHeight) window.sendHeight(); }, 50);
+    }
 
-// changer page
-function changerPage(page) {
-  const total = Math.ceil(voituresAffichees.length / voituresParPage);
-  if (page < 1 || page > total) return;
-  currentPage = page;
-  afficherVoitures();
-}
+    // changer page
+    function changerPage(page) {
+      const total = Math.ceil(voituresAffichees.length / voituresParPage);
+      if (page < 1 || page > total) return;
+      currentPage = page;
+      afficherVoitures();
+    }
 
-// recherche
-btn.addEventListener("click", () => {
-  currentPage = 1;
-  voituresAffichees = [...toutesVoitures];
+    // recherche
+    btn.addEventListener("click", () => {
+      currentPage = 1;
+      voituresAffichees = [...toutesVoitures];
 
-  const marque = marqueSelect.value;
-  const model = modelSelect.value;
-  const carburant = carburantSelect.value;
-  const prixMin = prixMinInput.value ? parseFloat(prixMinInput.value) : null;
-  const prixMax = prixMaxInput.value ? parseFloat(prixMaxInput.value) : null;
+      const marque = marqueSelect.value;
+      const model = modelSelect.value;
+      const carburant = carburantSelect.value;
+      const prixMin = prixMinInput.value ? parseFloat(prixMinInput.value) : null;
+      const prixMax = prixMaxInput.value ? parseFloat(prixMaxInput.value) : null;
 
-  if (!marque && !model && !carburant && !prixMin && !prixMax) {
-    alert("Veuillez remplir au moins un champ !");
-    return;
-  }
-  if (model && !marque) {
-    alert("Vous devez choisir une marque pour filtrer par modèle !");
-    return;
-  }
+      if (!marque && !model && !carburant && !prixMin && !prixMax) {
+        alert("Veuillez remplir au moins un champ !");
+        return;
+      }
+      if (model && !marque) {
+        alert("Vous devez choisir une marque pour filtrer par modèle !");
+        return;
+      }
 
-  if (marque) voituresAffichees = voituresAffichees.filter(v => v.marque === marque);
-  if (model) voituresAffichees = voituresAffichees.filter(v => v.model === model);
-  if (carburant) voituresAffichees = voituresAffichees.filter(v => v.carburants === carburant);
-  if (prixMin !== null) voituresAffichees = voituresAffichees.filter(v => v.prix >= prixMin);
-  if (prixMax !== null) voituresAffichees = voituresAffichees.filter(v => v.prix <= prixMax);
+      if (marque) voituresAffichees = voituresAffichees.filter(v => v.marque === marque);
+      if (model) voituresAffichees = voituresAffichees.filter(v => v.model === model);
+      if (carburant) voituresAffichees = voituresAffichees.filter(v => v.carburants === carburant);
+      if (prixMin !== null) voituresAffichees = voituresAffichees.filter(v => v.prix >= prixMin);
+      if (prixMax !== null) voituresAffichees = voituresAffichees.filter(v => v.prix <= prixMax);
 
-  if (voituresAffichees.length === 0) {
-    voituresSection.innerHTML = "<p>Aucun résultat trouvé.</p>";
-    paginationContainer.innerHTML = "";
-    return;
-  }
+      if (voituresAffichees.length === 0) {
+        voituresSection.innerHTML = "<p>Aucun résultat trouvé.</p>";
+        paginationContainer.innerHTML = "";
+        return;
+      }
 
-  afficherVoitures();
-});
+      afficherVoitures();
+    });
 
-// details voiture
-function voirDetails(marque, model) {
-  window.location.href = `detail.html?marque=${encodeURIComponent(marque)}&model=${encodeURIComponent(model)}`;
-}
+    // details voiture
+    function voirDetails(marque, model) {
+      window.location.href = `detail.html?marque=${encodeURIComponent(marque)}&model=${encodeURIComponent(model)}`;
+    }
 
-afficherVoitures();
+    afficherVoitures();
 
-const car = document.getElementById('car');
-const wheels = document.querySelectorAll('.spokes');
-const stage = document.getElementById('stage');
-const vw = stage.getBoundingClientRect().width;
+    const car = document.getElementById('car');
+    const wheels = document.querySelectorAll('.spokes');
+    const stage = document.getElementById('stage');
+    const vw = stage.getBoundingClientRect().width;
 
-gsap.to(car, {
-  x: vw + 500, 
-  duration: 8,
-  ease: 'none',
-  repeat: -1,
-  onRepeat: () => gsap.set(car, {x: -500})
-});
+    gsap.to(car, {
+      x: vw + 500, 
+      duration: 8,
+      ease: 'none',
+      repeat: -1,
+      onRepeat: () => gsap.set(car, {x: -500})
+    });
 
-wheels.forEach(w => gsap.to(w, {
-  rotation: 360,
-  transformOrigin: '50% 50%',
-  duration: 0.5,
-  ease: 'none',
-  repeat: -1
-}));
-</script>
+    wheels.forEach(w => gsap.to(w, {
+      rotation: 360,
+      transformOrigin: '50% 50%',
+      duration: 0.5,
+      ease: 'none',
+      repeat: -1
+    }));
+  </script>
 
 </body>
 </html>

@@ -1,66 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Détails voiture</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Détails voiture</title>
+        <style>
+        img{ width:250px; display:block; margin-bottom:10px; }
+        #details{
+            margin-top: 40px;
+            text-align: center;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        #detailvoiture{
+            width: 400px;
+            height: 450px;
+            border-radius: 20px 20px;
+            background-color: white;
+            box-shadow: 0px 0px 20px gray;
+            text-align: center;
+            font-size: large;
+            overflow: hidden;
+        }
+        #detailvoiture img{
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+             margin-bottom: 12px;
+        }
+        #details h1{
+            text-align: center;
+            text-decoration: none;
+            color: #ff6600;
+        }
+        #detaildescription{
+            padding-left: 10px;
+            margin: 0  15px;
+            text-align: left;
+        }
+        #detailvoiturefooter{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
 
-<style>
-img{ width:250px; display:block; margin-bottom:10px; }
-</style>
-</head>
-<body>
+        }
+        #details button{
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 200;
+            background-color: rgba(0, 0, 0, 0.871);
+            border: none;
+            color: whitesmoke;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 5px 10px 20px gray;
+        }
+        </style>
+    </head>
+    <body>
 
-<div id="details"></div>
- 
-<script src="../js/data.js"></script>
-<script>
+        <div id="details"></div>
+        
+        <script src="../js/data.js"></script>
+        <script>
 
-// Récupérer les paramètres
-const params = new URLSearchParams(window.location.search);
-const marque = params.get("marque");
-const model  = params.get("model");
+        // Récupérer les paramètres
+        const params = new URLSearchParams(window.location.search);
+        const marque = params.get("marque");
+        const model  = params.get("model");
 
-const container = document.getElementById("details");
+        const container = document.getElementById("details");
 
-// Charger la voiture
-let voitureTrouvee = null;
+        // Charger la voiture
+        let voitureTrouvee = null;
 
-data.cars.forEach(c => {
-    if (c.marque === marque) {
-        const car = c.models.find(m => m.model === model);
-        if (car) voitureTrouvee = { ...car, marque: marque };
-    }
-});
+        data.cars.forEach(c => {
+            if (c.marque === marque) {
+                const car = c.models.find(m => m.model === model);
+                if (car) voitureTrouvee = { ...car, marque: marque };
+            }
+        });
 
-if (!voitureTrouvee) {
-    container.innerHTML = "<p>Voiture introuvable.</p>";
-} else {
-    const v = voitureTrouvee;
-    container.innerHTML = `
-        <h1>${v.marque} ${v.model}</h1>
-        <img src="${v.image}" alt="${v.model}">
+        if (!voitureTrouvee) {
+            container.innerHTML = "<p>Voiture introuvable.</p>";
+        } else {
+            const v = voitureTrouvee;
+            container.innerHTML = `
+                <div id="detailvoiture">
+                    <h1>${v.marque} ${v.model}</h1>
+                    <img src="${v.image}" alt="${v.model}">
+                    <div id="detaildescription">
+                        <p><strong>Carburant :</strong> ${v.carburants}</p>
+                        <p><strong>Puissance réelle :</strong> ${v.puissance_reel} ch</p>
+                        <p><strong>Boîte de vitesses :</strong> ${v.boite_vitesse}</p>
+                        <p><strong>Prix :</strong> €${v.prix}</p>
+                        <p><strong>Kilométrage :</strong> ${v.km || "Non renseigné"}</p>
+                        <p><strong>Année :</strong> ${v.annee || "Non renseignée"}</p>
+                    </div>
+                </div>
+                    <div id="detailvoiturefooter">
+                        <button onclick="ajouterAuPanier()">Ajouter au panier</button>
+                        <button onclick="history.back()">⬅ Retour</button>
+                    </div>
+                
+            `;
+        }
+        function ajouterAuPanier() {
+            if (!voitureTrouvee) return;
+            let panier = JSON.parse(localStorage.getItem("panier")) || [];
+            panier.push(voitureTrouvee);
+            localStorage.setItem("panier", JSON.stringify(panier));
+            alert("Voiture ajoutée au panier !");
+        }
 
-        <p><strong>Carburant :</strong> ${v.carburants}</p>
-        <p><strong>Puissance réelle :</strong> ${v.puissance_reel} ch</p>
-        <p><strong>Boîte de vitesses :</strong> ${v.boite_vitesse}</p>
-        <p><strong>Prix :</strong> €${v.prix}</p>
-        <p><strong>Kilométrage :</strong> ${v.km || "Non renseigné"}</p>
-        <p><strong>Année :</strong> ${v.annee || "Non renseignée"}</p>
 
-        <button onclick="ajouterAuPanier()">Ajouter au panier</button>
-        <button onclick="history.back()">⬅ Retour</button>
-    `;
-}
-function ajouterAuPanier() {
-    if (!voitureTrouvee) return;
-    let panier = JSON.parse(localStorage.getItem("panier")) || [];
-    panier.push(voitureTrouvee);
-    localStorage.setItem("panier", JSON.stringify(panier));
-    alert("Voiture ajoutée au panier !");
-}
-
-
-</script>
-</body>
-<script src="../js/controllsize.js"></script>
+        </script>
+    </body>
+    <script src="../js/controllsize.js"></script>
 </html>
