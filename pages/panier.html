@@ -132,6 +132,7 @@
         #viderpanier{
             background-color: rgba(0, 0, 0, 0.903);
             box-shadow: 0px 0px 20px gray;
+            font-weight: bold;
         }
         #acheterall:hover{
             box-shadow: 5px 10px 20px #ff6600;
@@ -146,7 +147,91 @@
             background-color: rgba(255, 0, 0, 0.758);
             transform: translateY(-3px) scale(1.1);
         }
+        #achatform h2{
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: black;
+
+        }
+        fieldset{
+            text-align: center;
+            display: block;
+            border-radius: 20px;
+            border: none;
+            box-shadow: gray 2px 5px 10px;
+
+        }
+        .inputplace{
+            display: flex;
+            justify-content: center;
+        }
+        #achatform label{
+            margin-top: 10px;
+            padding: 10px 10px;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+            background-color: #ff6600;
+            box-shadow: #ff6600 0px 0px 10px;
+        }
+        #achatform input{
+            border: none;
+            margin-top:10px;
+            padding: 10px 10px;
+            border-top-right-radius: 10px ;
+            border-bottom-right-radius: 10px;
+            box-shadow: #ff6600 0px 0px 10px;
+        }
+        legend{
+            font-weight: bold;
+            font-family: normal;
+            font-size: 1.4em;
+            border: solid 1px;
+            border-radius: 10px;
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 10px;
+        }
+        #achatform label:hover{
+            transform: scale(1.01);
+            cursor: pointer;
+        }
+        #achatform input:hover{
+            transform: scale(1.01);
+            background-color: #ccccccd5;
+            border: 1px solid rgba(194, 191, 191, 0.764);
+        }
+        #achatform select{
+            border: none;
+            margin-top:10px;
+            padding: 10px 10px;
+            border-top-right-radius: 10px ;
+            border-bottom-right-radius: 10px;
+            box-shadow: #ff6600 0px 0px 10px;
+        }
+        #validerachat{
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            border-radius: 20px;
+            background-color: black;
+            box-shadow: 0px 0px 20px gray;
+
+        }
+        #validerachat:hover{
+            box-shadow: 5px 10px 20px #ff6600;
+            text-shadow: 0px 0px 10px rgba(128, 128, 128, 0.652);
+            transform: translateY(-3px) scale(1.1);
+            color: rgba(0, 0, 0, 0.475);
+            background-color: #ff6600;
+            border: none;
+        }
+        #validatezone{
+            text-align: center;
+        }
     </style>
+    <script src="https://kit.fontawesome.com/61291eb407.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="titre">
@@ -159,13 +244,60 @@
         <!--acheter et vider le panier buttons-->
         
     <div id="achetervider">
-        <button id="acheterall" >Acheter</button>
+        <button id="acheterall" onclick="acheterpanier()">Acheter</button>
         <button id="viderpanier" onclick="viderPanier()">Vider le panier</button>
     </div>
+    <hr width="90%" size="2px" >
+    <!--formulaire pour remplir a l'achat affiche seulement apres acheter-->
+    <div id="achatform" style="display: none;">
+        <h2>Formulaire d'achat d'une voiture</h2>
+        <!-- Informations acheteur -->
+        <fieldset>
+            <legend>Informations de l'acheteur</legend>
+            <div class="inputplace">
+                <label for="nom"><i class="fa-solid fa-user"></i></label><br>
+                <input type="text" id="nom" name="nom" required placeholder="Nom complet"><br><br>
+            </div>
+            <div class="inputplace">
+                <label for="email"><i class="fa-solid fa-at"></i></label><br>
+                <input type="email" id="email" name="email" required placeholder="email adress"><br><br>
+            </div>
+            <div class="inputplace">
+                <label for="telephone"><i class="fa-solid fa-phone"></i></label><br>
+                <input type="tel" id="telephone" name="telephone" required placeholder="numero de telephone"><br><br>
+            </div> 
+            <div class="inputplace">
+                <label for="adresse"><i class="fa-solid fa-location-dot"></i></label><br>
+                <input type="text" id="adresse" name="adresse" placeholder="adresse" required>
+            </div>
+        </fieldset>
+        <br><br>
+          <!-- Mode de paiement -->
+        <fieldset>
+            <legend>Paiement</legend>
+            <div class="inputplace">
+                <label for="modePaiement"><i class="fa-solid fa-money-check-dollar"></i></label><br>
+                <select id="modePaiement" name="modePaiement" required>
+                    <option value="">-- Sélectionner --</option>
+                    <option value="especes">Espèces</option>
+                    <option value="virement">Virement bancaire</option>
+                    <option value="cheque">Chèque</option>
+                    <option value="credit">Crédit / Financement</option>
+                </select><br><br>
+            </div>
+        </fieldset>
+        <br>
+        <div id="validatezone">
+            <button  id="validerachat" onclick="validerpanier()">valider</button>
+        </div>
+        <br><br>
+        <hr width="90%" size="2px" >
+    
+    </div>
+    
     <script>
         let panier = JSON.parse(localStorage.getItem("panier")) || [];
         const container = document.getElementById("panier");
-
         function afficherPanier() {
             container.innerHTML = "";
             if (panier.length === 0) {
@@ -207,6 +339,31 @@
 
         // Afficher initialement
         afficherPanier();
+        //formulaire apres button achat
+        function acheterpanier(){
+            if(panier.length ===0){
+                alert('le panier est vide!');
+                return;
+            }
+            document.getElementById("achatform").style.display="block";
+        }
+
+        function validerpanier(){
+            let nomcomplet = document.getElementById("nom").value;
+            let emailacheuteur = document.getElementById("email").value;
+            let telephone = document.getElementById("telephone").value;
+            let adresse = document.getElementById("adresse").value;
+            let paiementmethod = document.getElementById("modePaiement").value;
+            let numerofacture = Math.floor(10000000 + Math.random() * 90000000);
+            // Vérification des champs obligatoires
+            if (nomcomplet === "" || emailacheuteur === "" || telephone === "" || adresse === "" || paiementmethod === "") {
+                alert("Veuillez remplir toutes les informations avant de continuer!");
+                return; // Arrête la fonction, ne passe pas au reçu
+            }
+            // ouvrir une nouvelle page en envoyant les données
+             window.location.href = `recu.html?nom=${encodeURIComponent(nomcomplet)}&email=${encodeURIComponent(emailacheuteur)}&telephone=${encodeURIComponent(telephone)}&adresse=${encodeURIComponent(adresse)}&pay=${encodeURIComponent(paiementmethod)}&numero=${encodeURIComponent(numerofacture)}`;
+        }
+
     </script>
 
 </body>
