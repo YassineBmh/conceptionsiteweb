@@ -1,92 +1,101 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-    <style>
-        iframe {
-            width: 100%;
-            min-height: 100vh;
-            border: none;
-            overflow: hidden;
-            display: block;
-        }
-        .topbar {
-            background: #333;
-            padding: 8px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            font-size: 18px;
-            margin-left: 0px;
-            margin-right: 0px;
-            border-radius: 10px;
-        }
+<style>
+    iframe {
+        width: 100%;
+        min-height: 100vh;
+        border: none;
+        overflow: hidden;
+        display: block;
+    }
 
-        .topbar a {
-            color: white;
-            margin: 0 12px;
-            text-decoration: none;
-            font-size: 20px;
-        }
+    .topbar {
+        background: #333;
+        padding: 8px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-size: 18px;
+        margin-left: 0px;
+        margin-right: 0px;
+        border-radius: 10px;
+    }
 
-        .topbar a:hover {
-            opacity: 0.7;
-        }
+    .topbar a {
+        color: white;
+        margin: 0 12px;
+        text-decoration: none;
+        font-size: 20px;
+    }
 
-        .bar {
-            display: flex;
-            justify-content: space-between;
-            padding:0% 7%;
-            border-bottom: 1px solid #ddd;
-            }
+    .topbar a:hover {
+        opacity: 0.7;
+    }
 
-        .bar img {
-            height: 70px;
-        }
+    .bar {
+        display: flex;
+        justify-content: space-between;
+        padding: 0% 7%;
+        border-bottom: 1px solid #ddd;
+    }
 
-        .navbar {
-            background: white;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 15px 0;
-        }
+    .bar img {
+        height: 70px;
+    }
 
-        .navbar a {
-            text-decoration: none;
-            font-size: 18px;
-            position: relative;
-            padding-bottom: 5px;
-            color: rgb(85, 81, 81);
-        }
+    .navbar {
+        background: white;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 15px 0;
+    }
 
-        /* Animation hover : trait rouge */
-        .navbar a::after {
-            content: "";
-            width: 0%;
-            height: 2px;
-            background: #ff6f00;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            transition: 0.3s;
-        }
+    .navbar a {
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 5px;
+        color: rgb(85, 81, 81);
+    }
 
-        .navbar a:hover::after {
-            width: 100%;
-        }
+    /* Animation hover : trait rouge */
+    .navbar a::after {
+        content: "";
+        width: 0%;
+        height: 2px;
+        background: #ff6f00;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: 0.3s;
+    }
 
-        .navbar a:hover {
-            color: #ff6f00;
-        }
-        
+    .navbar a:hover::after {
+        width: 100%;
+    }
 
+    .navbar a:hover {
+        color: #ff6f00;
+    }
 
-    </style>
+    footer a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    footer a:hover {
+        opacity: 0.7;
+    }
+</style>
+
 <body>
     <!-- TOP BAR -->
     <div class="topbar">
@@ -106,47 +115,88 @@
     <!-- LOGO -->
     <div class="bar">
         <img src="images/logo.png" alt="AGA TOURS Logo">
-    
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <a href="#" onclick="loadPage('pages/accueil.html')">Accueil</a>
-        <a href="#" onclick="loadPage('pages/a_propos.html')">A Propos</a>
-        <a href="#" onclick="loadPage('pages/partenaires.html')">Partenaires</a>
-        <a href="#" onclick="loadPage('pages/contact.html')">Contactez-nous</a>
-        <a href="#" onclick="loadPage('pages/panier.html')">
-            🛒 Panier (<span id="countPanier">0</span>)
-        </a>
-    </nav>
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="#" onclick="loadPage('pages/accueil.html')">Accueil</a>
+            <a href="#" onclick="loadPage('pages/a_propos.html')">A Propos</a>
+            <a href="#" onclick="loadPage('pages/partenaires.html')">Partenaires</a>
+            <a href="#" onclick="loadPage('pages/contact.html')">Contactez-nous</a>
+            <a href="#" onclick="loadPage('pages/panier.html')">
+                🛒 Panier (<span id="countPanier">0</span>)
+            </a>
+        </nav>
     </div>
 
     <div class="container">
         <iframe id="content" src="pages/accueil.html"></iframe>
     </div>
     <!--footer -->
-    <footer>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et debitis deleniti facere magni quod quam, illo molestias. Explicabo accusantium ea illo repudiandae, ratione laudantium eius porro, quam consequatur nemo fuga?</footer>
-<script>
-function loadPage(page) {
-    document.getElementById("content").src = page;
-}
-window.addEventListener("message", function(event) {
-    if (event.data.type === "resizeIframe") {
-        const iframe = document.getElementById("content");
-        iframe.style.height = event.data.height + "px";
-    }
-});
+    <footer style="
+    background:#222;
+    color:#ccc;
+    padding:40px 20px;
+    text-align:center;
+    font-size:14px;
+    margin-top:40px;
+    border-top: 3px solid #ff6f00;
+">
+        <div style="max-width:1000px; margin:auto;">
 
-// Compteur panier
-function updatePanierCount() {
-    let panier = JSON.parse(localStorage.getItem("panier")) || [];
-    document.getElementById("countPanier").textContent = panier.length;
-}
+            <h3 style="color:white; margin-bottom:15px; font-size:20px;">ENSA CARS</h3>
+            <p style="margin-bottom:20px; line-height:1.6;">
+                Votre agence de confiance pour la location de voitures à Agadir.
+                Qualité, service et fiabilité – à votre service 24/7.
+            </p>
 
-// Mise à jour initiale
-updatePanierCount();
+            <div style="margin-bottom:20px;">
+                <a href="#" onclick="loadPage('pages/accueil.html')" style="color:#ff6f00; margin:0 10px;">Accueil</a>
+                <a href="#" onclick="loadPage('pages/a_propos.html')" style="color:#ff6f00; margin:0 10px;">À propos</a>
+                <a href="#" onclick="loadPage('pages/partenaires.html')"
+                    style="color:#ff6f00; margin:0 10px;">Partenaires</a>
+                <a href="#" onclick="loadPage('pages/contact.html')" style="color:#ff6f00; margin:0 10px;">Contact</a>
+            </div>
 
-// Vérification régulière si l'iframe ajoute des articles
-setInterval(updatePanierCount, 500);
-</script>
+
+            <div style="margin-bottom:20px;">
+                <a href="#" style="color:#fff; margin:0 8px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color:#fff; margin:0 8px;"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/212600000000" target="_blank" style="color:#fff; margin:0 8px;">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <p style="color:#777; font-size:13px; margin-top:20px;">
+                © 2025 ENSA CARS – Tous droits réservés.
+            </p>
+
+        </div>
+    </footer>
+
+    <script>
+        function loadPage(page) {
+            document.getElementById("content").src = page;
+        }
+        window.addEventListener("message", function (event) {
+            if (event.data.type === "resizeIframe") {
+                const iframe = document.getElementById("content");
+                iframe.style.height = event.data.height + "px";
+            }
+        });
+
+        // Compteur panier
+        function updatePanierCount() {
+            let panier = JSON.parse(localStorage.getItem("panier")) || [];
+            document.getElementById("countPanier").textContent = panier.length;
+        }
+
+        // Mise à jour initiale
+        updatePanierCount();
+
+        // Vérification régulière si l'iframe ajoute des articles
+        setInterval(updatePanierCount, 500);
+    </script>
 </body>
+
 </html>
