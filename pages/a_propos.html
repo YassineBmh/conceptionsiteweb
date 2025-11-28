@@ -1,386 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>À propos animé</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>À propos animé</title>
+        <link rel="stylesheet" href="../styles/a_propos.css">
+    </head>
+    <body>
 
-<style>
-/* === Styles de base === */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    line-height: 1.6;
-}
+        <header>
+            <h1>À propos de notre site</h1>
+        </header>
 
-header {
-    background-color: #ff6600;
-    color: white;
-    padding: 20px 40px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
+        <div class="container">
 
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-/* === Titres animés === */
-h1, h2 {
-    color: #ff6600;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideFadeIn 1s forwards;
-}
-
-h1 { animation-delay: 0.2s; }
-h2 { animation-delay: 0.4s; }
-
-@keyframes slideFadeIn {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* === Cartes animées === */
-.card {
-    background: linear-gradient(145deg, #fdf6f0, #f9f9f9);
-    padding: 20px;
-    border-left: 5px solid #ff6600;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease-out;
-}
-
-.card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    background: linear-gradient(145deg, #fff0e0, #fdf6f0);
-}
-
-/* === Texte animé dans les cartes === */
-.card p, .card ul li {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.8s ease-out;
-}
-
-.card.visible p, .card.visible ul li {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* === Footer === */
-footer {
-    margin-top: 50px;
-    text-align: center;
-    padding: 20px;
-    background: #333;
-    color: white;
-}
-
-/* === Témoignages === */
-.testimonial-slider {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    overflow: hidden;
-    border-left: 5px solid #ff6600;
-    border-radius: 10px;
-    background: #fff3e0;
-    margin-bottom: 10px;
-}
-
-.testimonial-slide {
-    position: absolute;
-    width: 100%;
-    padding: 15px 20px;
-    font-style: italic;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transform: translateX(100%) scale(0.95);
-    transition: all 1s cubic-bezier(.68,-0.55,.27,1.55);
-}
-
-.testimonial-slide.active {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-}
-
-.testimonial-slide.previous {
-    opacity: 0;
-    transform: translateX(-100%) scale(0.95);
-}
-
-/* Boutons et hover dynamique */
-.testimonial-buttons {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.testimonial-buttons button {
-    background-color: #ff6600;
-    color: white;
-    border: none;
-    padding: 6px 18px;
-    margin: 0 5px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.testimonial-buttons button:hover {
-    background-color: #e65500;
-    transform: scale(1.1);
-}
-
-/* Dots animés */
-.testimonial-indicators {
-    text-align: center;
-    margin-top: 5px;
-}
-
-.testimonial-indicators .dot {
-    height: 12px;
-    width: 12px;
-    margin: 0 4px;
-    background-color: #ccc;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.testimonial-indicators .dot.active {
-    background-color: #ff6600;
-    transform: scale(1.3);
-}
-
-/* === Statistiques === */
-.stats {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.stats div {
-    background: linear-gradient(145deg, #fdf6f0, #f9f9f9);
-    padding: 20px;
-    border-radius: 10px;
-    border-left: 5px solid #ff6600;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    flex: 1;
-    margin: 10px;
-    transition: transform 0.3s ease;
-}
-
-.stats div:hover {
-    transform: scale(1.05);
-}
-
-.stats div h3 {
-    color: #ff6600;
-    font-size: 2em;
-    margin: 0;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s ease-out;
-}
-
-.stats div h3.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-</style>
-</head>
-<body>
-
-<header>
-    <h1>À propos de notre site</h1>
-</header>
-
-<div class="container">
-
-    <div class="card">
-        <h2>Notre Mission</h2>
-        <p>
-            Nous vous offrons une plateforme simple, rapide et fiable pour acheter, vendre et découvrir 
-            les meilleures voitures neuves et d’occasion. Notre objectif est de rendre l’expérience 
-            automobile plus transparente et accessible à tous.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>Pourquoi Nous Choisir ?</h2>
-        <ul>
-            <li> Annonces vérifiées et mises à jour régulièrement</li>
-            <li> Large choix de modèles et de catégories</li>
-            <li> Interface moderne, claire et facile à utiliser</li>
-            <li> Support réactif et à l’écoute de vos besoins</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Notre Engagement</h2>
-        <p>
-            Nous nous engageons à offrir une expérience fiable, sécurisée et 100% transparente.
-            Votre confiance est notre priorité.
-        </p>
-    </div>
-
-
-    <!-- Témoignages -->
-    <div class="card">
-        <h2>Témoignages</h2>
-        <div class="testimonial-slider" id="testimonial-slider">
-            <div class="testimonial-slide active">"Excellente expérience, j'ai vendu ma voiture rapidement et facilement !" – <strong>Karim hamo</strong></div>
-            <div class="testimonial-slide">"Plateforme claire et fiable. Je recommande vivement !" – <strong>Sofia oucheikh</strong></div>
-            <div class="testimonial-slide">"Support client très réactif, merci pour votre aide !" – <strong>Youssef aqdim</strong></div>
-        </div>
-
-        <div class="testimonial-buttons">
-            <button id="prev">Précédent</button>
-            <button id="next">Suivant</button>
-        </div>
-
-        <div class="testimonial-indicators">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-        </div>
-    </div>
-
-    <!-- Statistiques -->
-    <div class="card">
-        <h2>Nos Statistiques</h2>
-        <div class="stats">
-            <div>
-                <h3>+1000</h3>
-                <p>Voitures vendues</p>
+            <div class="card">
+                <h2>Notre Mission</h2>
+                <p>
+                    Nous vous offrons une plateforme simple, rapide et fiable pour acheter, vendre et découvrir 
+                    les meilleures voitures neuves et d’occasion. Notre objectif est de rendre l’expérience 
+                    automobile plus transparente et accessible à tous.
+                </p>
             </div>
-            <div>
-                <h3>+950</h3>
-                <p>Clients satisfaits</p>
+
+            <div class="card">
+                <h2>Pourquoi Nous Choisir ?</h2>
+                <ul>
+                    <li> Annonces vérifiées et mises à jour régulièrement</li>
+                    <li> Large choix de modèles et de catégories</li>
+                    <li> Interface moderne, claire et facile à utiliser</li>
+                    <li> Support réactif et à l’écoute de vos besoins</li>
+                </ul>
             </div>
-            <div>
-                <h3>+500</h3>
-                <p>Modèles disponibles</p>
+
+            <div class="card">
+                <h2>Notre Engagement</h2>
+                <p>
+                    Nous nous engageons à offrir une expérience fiable, sécurisée et 100% transparente.
+                    Votre confiance est notre priorité.
+                </p>
             </div>
+
+
+            <!-- Témoignages -->
+            <div class="card">
+                <h2>Témoignages</h2>
+                <div class="testimonial-slider" id="testimonial-slider">
+                    <div class="testimonial-slide active">"Excellente expérience, j'ai vendu ma voiture rapidement et facilement !" – <strong>Karim hamo</strong></div>
+                    <div class="testimonial-slide">"Plateforme claire et fiable. Je recommande vivement !" – <strong>Sofia oucheikh</strong></div>
+                    <div class="testimonial-slide">"Support client très réactif, merci pour votre aide !" – <strong>Youssef aqdim</strong></div>
+                </div>
+
+                <div class="testimonial-buttons">
+                    <button id="prev">Précédent</button>
+                    <button id="next">Suivant</button>
+                </div>
+
+                <div class="testimonial-indicators">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+            </div>
+
+            <!-- Statistiques -->
+            <div class="card">
+                <h2>Nos Statistiques</h2>
+                <div class="stats">
+                    <div>
+                        <h3>+1000</h3>
+                        <p>Voitures vendues</p>
+                    </div>
+                    <div>
+                        <h3>+950</h3>
+                        <p>Clients satisfaits</p>
+                    </div>
+                    <div>
+                        <h3>+500</h3>
+                        <p>Modèles disponibles</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-
-</div>
-
-
-<script>
-// === Slider Témoignages ===
-let slides = document.querySelectorAll('.testimonial-slide');
-let dots = document.querySelectorAll('.dot');
-let current = 0;
-let autoSlide;
-
-function showSlide(index) {
-    slides[current].classList.remove('active');
-    slides[current].classList.add('previous');
-    dots[current].classList.remove('active');
-
-    current = index;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-
-    setTimeout(() => {
-        slides.forEach(slide => slide.classList.remove('previous'));
-    }, 1000);
-}
-
-document.getElementById('next').addEventListener('click', () => {
-    showSlide((current + 1) % slides.length);
-});
-
-document.getElementById('prev').addEventListener('click', () => {
-    showSlide((current - 1 + slides.length) % slides.length);
-});
-
-dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        let index = parseInt(dot.getAttribute('data-index'));
-        showSlide(index);
-    });
-});
-
-function startAutoSlide() {
-    autoSlide = setInterval(() => {
-        showSlide((current + 1) % slides.length);
-    }, 3000);
-}
-
-function stopAutoSlide() {
-    clearInterval(autoSlide);
-}
-
-let slider = document.getElementById('testimonial-slider');
-slider.addEventListener('mouseenter', stopAutoSlide);
-slider.addEventListener('mouseleave', startAutoSlide);
-
-slides[0].classList.add('active');
-dots[0].classList.add('active');
-startAutoSlide();
-
-// === Animations au scroll ===
-function revealOnScroll() {
-    let cards = document.querySelectorAll('.card');
-    let stats = document.querySelectorAll('.stats h3');
-
-    cards.forEach(card => {
-        let top = card.getBoundingClientRect().top;
-        let windowHeight = window.innerHeight;
-        if (top < windowHeight - 50) {
-            card.classList.add('visible');
-        }
-    });
-
-    stats.forEach(stat => {
-        let top = stat.getBoundingClientRect().top;
-        let windowHeight = window.innerHeight;
-        if (top < windowHeight - 50 && !stat.classList.contains('visible')) {
-            stat.classList.add('visible');
-            animateStat(stat);
-        }
-    });
-}
-
-function animateStat(element) {
-    let value = parseInt(element.innerText);
-    let start = 0;
-    let duration = 1500;
-    let stepTime = Math.abs(Math.floor(duration / value));
-    let counter = setInterval(() => {
-        start += 1;
-        element.innerText = start;
-        if (start >= value) clearInterval(counter);
-    }, stepTime);
-}
-
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-</script>
-
-</body>
+    <script src="../js/a_propos.js"></script>
+    </body>
 </html>

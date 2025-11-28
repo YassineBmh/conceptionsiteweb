@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/61291eb407.js" crossorigin="anonymous"></script>
 </head>
 <style>
     iframe {
@@ -94,18 +95,65 @@
     footer a:hover {
         opacity: 0.7;
     }
+    .sidebar{
+        width: 50%;
+        background-color: rgba(255, 255, 255, 0.689);
+        backdrop-filter: blur(10px);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap:0;
+        display: none;
+        position: fixed;
+        top: 50px;
+        right: 0;
+        height: 100vh;
+    }
+    .sidebar a{
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 5px;
+        color: rgb(85, 81, 81);
+        width: 100%;
+        height:40px;
+    }
+    .sidebar a:hover {
+        color: #ff6f00;
+        background-color: #f0f0f0;
+    }
+    .fa-bars{
+        border: 1px solid black;
+        border-radius: 4px;
+        display: none;
+    }
+    a .fa-bars{
+        padding: 2px 2px;
+    }
+    @media (max-width: 1000px) {
+        .hideonmobile{
+            display: none;
+        }
+        .fa-bars{
+            display: block;
+        }
+        
+    }
+
 </style>
 
 <body>
     <!-- TOP BAR -->
     <div class="topbar">
         <div>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-            <a href="#"><i class="fas fa-phone"></i></a>
+            <a href="mailto:" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="#" target="_blank"><i class="fas fa-phone"></i></a>
         </div>
         <div>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/212600000000" target="_blank">
                 <i class="fab fa-whatsapp"></i>
             </a>
@@ -119,6 +167,19 @@
 
         <!-- NAVBAR -->
         <nav class="navbar">
+                <a href="#" onclick="loadPage('pages/accueil.html')" class="hideonmobile">Accueil</a>
+                <a href="#" onclick="loadPage('pages/a_propos.html')" class="hideonmobile">A Propos</a>
+                <a href="#" onclick="loadPage('pages/partenaires.html')" class="hideonmobile">Partenaires</a>
+                <a href="#" onclick="loadPage('pages/contact.html')" class="hideonmobile">Contactez-nous</a>
+                <a href="#" onclick="loadPage('pages/panier.html')" class="hideonmobile">
+                    🛒 Panier (<span id="countPanier">0</span>)
+                </a>
+            <a href="#" onclick="showsidebar()"><i class="fa-solid fa-bars"></i></a>
+        </nav>
+        <!--navbar on mobile vue-->
+
+        <nav class="sidebar">
+            <a href="#" onclick="hidesidebar()"><i class="fa-solid fa-xmark"></i></a>
             <a href="#" onclick="loadPage('pages/accueil.html')">Accueil</a>
             <a href="#" onclick="loadPage('pages/a_propos.html')">A Propos</a>
             <a href="#" onclick="loadPage('pages/partenaires.html')">Partenaires</a>
@@ -140,8 +201,7 @@
     text-align:center;
     font-size:14px;
     margin-top:40px;
-    border-top: 3px solid #ff6f00;
-">
+    border-top: 3px solid #ff6f00;">
         <div style="max-width:1000px; margin:auto;">
 
             <h3 style="color:white; margin-bottom:15px; font-size:20px;">ENSA CARS</h3>
@@ -196,6 +256,15 @@
 
         // Vérification régulière si l'iframe ajoute des articles
         setInterval(updatePanierCount, 500);
+
+        function showsidebar(){
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+        }
+        function hidesidebar(){
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
     </script>
 </body>
 
