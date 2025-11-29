@@ -42,7 +42,7 @@ img { width: 200px; display:block; margin-bottom:10px; }
         .voiture h3{
             text-align: center;
             text-decoration: none;
-            color: #ff6600;
+            color: black;
         }
         .voituredescription{
             list-style: none;

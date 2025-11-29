@@ -4,34 +4,23 @@ body {
             padding: 40px;
             background: #f5f5f5;
         }
+        #titre{
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #ff6600;
+            margin: 0 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(206, 99, 10, 0.804);
+        }
 
         h1 {
+            font-family: normal;
             text-align: center;
-            margin-bottom: 40px;
-            color: #333;
-            font-size: 36px;
-            letter-spacing: 1px;
-            font-weight: 600;
-
-            /* nice underline effect */
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
+            text-decoration: none;
         }
-
-        h1::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 3px;
-            background: #ff6f00;
-            /* same orange as navbar hover */
-            border-radius: 2px;
-        }
-
         /* EXACT 3 per row */
         .partners-grid {
             display: grid;
